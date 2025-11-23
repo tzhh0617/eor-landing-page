@@ -5,26 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GlobalWork | Hire Anywhere</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
           extend: {
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
             },
             colors: {
-              primary: {
-                50: '#f0f9ff',
-                100: '#e0f2fe',
-                200: '#bae6fd',
-                300: '#7dd3fc',
-                400: '#38bdf8',
-                500: '#0ea5e9',
-                600: '#0284c7',
-                700: '#0369a1',
-                800: '#075985',
-                900: '#0c4a6e',
+              brand: {
+                50: '#eff1fc',
+                100: '#e0e4f8',
+                200: '#c5ccee',
+                300: '#9da9e0',
+                400: '#6e7fce',
+                500: '#4e5ebd',
+                600: '#3d4aa8',
+                700: '#303F90', // Deep Indigo (Primary)
+                800: '#2a3374',
+                900: '#1e2455',
+              },
+              accent: {
+                50: '#fffdf0',
+                100: '#fff8c2',
+                200: '#fff085',
+                300: '#ffe447',
+                400: '#FFC73A', // Golden Amber (Secondary)
+                500: '#f5a50b',
+                600: '#d97f06',
+                700: '#b45609',
+                800: '#92400e',
+                900: '#78350f',
+              }
+            },
+            animation: {
+              'blob': 'blob 7s infinite',
+              'float': 'float 6s ease-in-out infinite',
+            },
+            keyframes: {
+              blob: {
+                '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                '100%': { transform: 'translate(0px, 0px) scale(1)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
               }
             }
           }
@@ -32,7 +61,6 @@
       }
     </script>
     <style>
-      /* Custom scrollbar for better aesthetics */
       ::-webkit-scrollbar {
         width: 8px;
       }
@@ -40,11 +68,20 @@
         background: #f1f1f1;
       }
       ::-webkit-scrollbar-thumb {
-        background: #cbd5e1;
+        background: #9da9e0;
         border-radius: 4px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #94a3b8;
+        background: #6e7fce;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
       }
     </style>
   <script type="importmap">
@@ -54,12 +91,13 @@
     "react": "https://aistudiocdn.com/react@^19.2.0",
     "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
     "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^11.0.0"
   }
 }
 </script>
 </head>
-  <body class="bg-white text-slate-900 antialiased">
+  <body class="bg-white text-slate-900 antialiased overflow-x-hidden selection:bg-accent-400 selection:text-brand-900">
     <div id="root"></div>
   </body>
 </html>
